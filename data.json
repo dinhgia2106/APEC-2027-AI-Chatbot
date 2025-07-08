@@ -1,0 +1,549 @@
+{
+  "apec_general_info": {
+    "title": "APEC General Information",
+    "introduction": "The Asia-Pacific Economic Cooperation (APEC) is a regional economic forum established in 1989 to leverage the growing interdependence of the Asia-Pacific. APEC's 21 members aim to create greater prosperity for the people of the region by promoting balanced, inclusive, sustainable, innovative and secure growth and by accelerating regional economic integration. APEC ensures that goods, services, investment, and people move smoothly across borders. Members facilitate trade through streamlining customs procedures at borders; fostering more favorable business environments; and coordinating regulations and standards across the region. It is the only global intergovernmental forum in the world committed to reducing barriers to trade and investment without legally binding obligations. APEC achieves its goals by promoting dialogue and arriving at decisions on a consensus basis, and it gives equal weight to the views of all members.",
+    "mission": "APEC’s mission is to achieve sustainable economic growth and prosperity in the Asia-Pacific region. Members are united in a drive to build a dynamic and harmonious Asia-Pacific community by championing free and open trade and investment; promoting and accelerating regional economic integration; encouraging economic and technological cooperation; enhancing human security; and facilitating a favorable and sustainable business environment. The initiatives help turn policy goals into concrete results and agreements into tangible benefits for the region.",
+    "vision_2040": "The Putrajaya Vision 2040, which outlines APEC’s vision for the next 20 years, was adopted at the 2020 APEC Economic Leaders’ Meeting (AELM). The vision aims to achieve “an open, dynamic, resilient and peaceful Asia-Pacific community by 2040, for the prosperity of all our people and future generations.” APEC members will endeavor to achieve this vision by pursuing three economic drivers: trade and investment; innovation and digitalization; and strong, balanced, secure, sustainable and inclusive growth.",
+    "member_economies": [
+      "Australia",
+      "Brunei Darussalam",
+      "Canada",
+      "Chile",
+      "People’s Republic of China",
+      "Hong Kong, China",
+      "Indonesia",
+      "Japan",
+      "Republic of Korea",
+      "Malaysia",
+      "Mexico",
+      "New Zealand",
+      "Papua New Guinea",
+      "Peru",
+      "The Republic of The Philippines",
+      "The Russian Federation",
+      "Singapore",
+      "Chinese Taipei",
+      "Thailand",
+      "United States",
+      "Viet Nam"
+    ]
+  },
+  "apec_2025_korea": {
+    "overview": {
+      "title": "APEC 2025 KOREA",
+      "location": "Gyeongju, Jeju, Incheon, Busan",
+      "theme_and_priorities": "Building a Sustainable Tomorrow : Connect, Innovate, Prosper",
+      "korea_and_apec": "As of 2023, Korea’s exports and imports of goods to and from APEC economies accounted for 74.7% and 67.5% of its total exports and imports, respectively. Eight of Korea’s top 10 trading partners are in APEC (People’s Republic of China; The United States; Viet Nam; Japan; Australia; Chinese Taipei; Singapore; Hong Kong, China). In addition, 57.6% of Korea's outbound foreign direct investment (FDI) flows to APEC economies, while 46.5% of its inbound FDI comes from APEC economies."
+    },
+    "schedule": {
+      "title": "APEC 2025 Meetings Schedule",
+      "meetings": [
+        {
+          "no": "1",
+          "event_title": "Informal Senior Officials’ Meeting (ISOM)",
+          "date": "December 9 - 11, 2024",
+          "venue": "Seoul"
+        },
+        {
+          "no": "2",
+          "event_title": "1st APEC Business Advisory Council Meeting (ABAC)",
+          "date": "February 23 – 25, 2025",
+          "venue": "Brisbane, Australia"
+        },
+        {
+          "no": "3",
+          "event_title": "First Senior Officials’ Meeting and Related Meetings (SOM1)",
+          "date": "February 24 - March 9, 2025",
+          "venue": "Gyeongju"
+        },
+        {
+          "no": "4",
+          "event_title": "Finance and Central Bank Deputies’ Meeting (FCBDM)",
+          "date": "March 6 - 7, 2025",
+          "venue": "Gyeongju"
+        },
+        {
+          "no": "5",
+          "event_title": "2nd APEC Business Advisory Council Meeting (ABAC)",
+          "date": "April 23 - 26, 2025",
+          "venue": "Toronto, Canada"
+        },
+        {
+          "no": "6",
+          "event_title": "APEC Ocean-Related Ministerial Meeting (AOMM)",
+          "date": "April 30 - May 1, 2025",
+          "venue": "Busan"
+        },
+        {
+          "no": "7",
+          "event_title": "Second Senior Officials’ Meeting and Related Meetings (SOM2)",
+          "date": "May 3 - 16, 2025",
+          "venue": "Jeju"
+        },
+        {
+          "no": "8",
+          "event_title": "Human Resource Development Ministerial Meeting (HRDMM)",
+          "date": "May 11 - 13, 2025",
+          "venue": "Jeju"
+        },
+        {
+          "no": "9",
+          "event_title": "APEC Education Ministerial Meeting(AEMM)",
+          "date": "May 13 - 15, 2025",
+          "venue": "Jeju"
+        },
+        {
+          "no": "10",
+          "event_title": "Ministers Responsible for Trade (MRT)",
+          "date": "May 15 - 16, 2025",
+          "venue": "Jeju"
+        },
+        {
+          "no": "11",
+          "event_title": "3rd APEC Business Advisory Council Meeting (ABAC)",
+          "date": "July 15 - 18, 2025",
+          "venue": "Hai Phong, Vietnam"
+        },
+        {
+          "no": "12",
+          "event_title": "Third Senior Officials’ Meeting and Related Meetings (SOM3)",
+          "date": "July 26 - August 15, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "13",
+          "event_title": "APEC High-Level Dialogue of Anti-Corruption Cooperation (AHDAC)",
+          "date": "July 31 - August 1, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "14",
+          "event_title": "Digital & AI Ministerial Meeting (DMM)",
+          "date": "August 4 - 6, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "15",
+          "event_title": "Food Security Ministerial Meeting (FSMM)",
+          "date": "August 9 - 10, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "16",
+          "event_title": "Women and the Economy Forum (WEF)",
+          "date": "August 12, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "17",
+          "event_title": "High-Level Dialogue on Culture (HLDC)",
+          "date": "August 26 - 28, 2025",
+          "venue": "Gyeongju"
+        },
+        {
+          "no": "18",
+          "event_title": "Energy Ministerial Meeting (EMM)",
+          "date": "August 27 - 28, 2025",
+          "venue": "Busan"
+        },
+        {
+          "no": "19",
+          "event_title": "Small and Medium Enterprises Ministerial Meeting (SMEMM)",
+          "date": "September 1 - 5, 2025",
+          "venue": "Jeju"
+        },
+        {
+          "no": "20",
+          "event_title": "High-Level Meeting on Health and the Economy",
+          "date": "September 15 - 16, 2025",
+          "venue": "Seoul"
+        },
+        {
+          "no": "21",
+          "event_title": "Finance Ministerial Meeting (FMM)",
+          "date": "October 21 - 22, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "22",
+          "event_title": "Structural Reform Ministerial Meeting (SRMM)",
+          "date": "October 21 - 23, 2025",
+          "venue": "Incheon"
+        },
+        {
+          "no": "23",
+          "event_title": "4th APEC Business Advisory Council Meeting (ABAC)",
+          "date": "October 26 - 28, 2025",
+          "venue": "Busan"
+        },
+        {
+          "no": "24",
+          "event_title": "APEC CEO Summit",
+          "date": "-",
+          "venue": "Gyeongju"
+        },
+        {
+          "no": "25",
+          "event_title": "APEC Economic Leaders’ Week (AELW) - Concluding Senior Officials’ Meeting (CSOM) - APEC Ministerial Meeting (AMM) - APEC Economic Leaders’ Meeting (AELM)",
+          "date": "-",
+          "venue": "Gyeongju"
+        }
+      ]
+    },
+    "venues": {
+      "title": "APEC 2025 Venues in South Korea",
+      "introduction": "APEC 2025 will be held in several major cities in South Korea, including Gyeongju, Jeju, Incheon, and Busan. Seoul will also host some initial meetings. Each city will serve as a host for specific meetings and events, with carefully selected convention centers and hotels.",
+      "host_cities": [
+        {
+          "city_name": "Gyeongju",
+          "description": "Gyeongju, a historic city famous for its rich cultural heritage, will be the main venue for the APEC Economic Leaders' Week (AELW).",
+          "main_venues": ["Gyeongju Arts Center", "Gyeongju Hwarang Village"],
+          "events": {
+            "apec_ceo_summit": "The APEC CEO Summit 2025 will be held at the Gyeongju Arts Center.",
+            "welcome_reception": "The welcome reception will take place at the Gyeongju Hwarang Village."
+          },
+          "hospitality_and_services": "To ensure the highest quality of service, Lotte Hotels & Resorts, a luxury hotel chain, has provided comprehensive protocol training for top hospitality professionals in Gyeongju, including Lotte Hotel Seoul and other leading hotels in the region. The involvement of Lotte Hotels & Resorts in this training demonstrates South Korea's commitment to ensuring top-tier service quality and VIP experiences for APEC delegations.",
+          "strategic_analysis": "This initiative is not just a simple logistical arrangement but a strategic investment in human resources and service quality, with a special focus on VIP services, cultural sensitivity, and diplomatic protocols. This indicates a deliberate effort by the host country to enhance the overall hospitality experience in Gyeongju, especially for high-level delegates and leaders attending the APEC Summit and CEO Summit. The goal is to leave a strong positive impression on international visitors, reflecting well on South Korea's global standing.",
+          "accommodation_booking": "The official website of the APEC CEO Summit 2025 will also provide hotel booking links for registrants to ensure convenient accommodation during the summit."
+        },
+        {
+          "city_name": "Jeju",
+          "description": "Jeju Island has completed a comprehensive inspection of areas including transportation and accommodation in preparation for hosting APEC meetings.",
+          "main_venue": "Jeju International Convention Center (ICC Jeju)",
+          "events_at_main_venue": [
+            "Second Senior Officials' Meeting (SOM2)",
+            "APEC Ministers Responsible for Trade Meeting (MRT)",
+            "APEC Education Ministerial Meeting (AEMM)",
+            "Global Education Reform Conference",
+            "APEC Future Education Forum (AFEF)"
+          ],
+          "hotels_with_event_space": [
+            "Jeju Shinhwa World Marriott Resort (largest event space)",
+            "Phoenix Island Resort",
+            "Seogwipo KAL Hotel",
+            "Hotel Bareve",
+            "Days Hotel Jeju Seogwipo Ocean",
+            "The We Hotel",
+            "Hotel Bridge Seogwipo",
+            "Mercure Ambassador Jeju",
+            "Seaes Hotel & Resort",
+            "Ramada Encore Jeju Seogwipo"
+          ],
+          "education_meeting_hotels": ["Jeju Booyoung Hotel", "Jeju KAL Hotel"]
+        },
+        {
+          "city_name": "Incheon",
+          "description": "The city of Incheon will be the main venue for the Third Senior Officials' Meeting (SOM3) and related ministerial meetings such as DMM, FSMM, WEF, FMM, and SRMM.",
+          "main_venue": {
+            "name": "Songdo ConvensiA",
+            "location": "Songdo International City",
+            "details": "17,021 square feet of exhibition space and 22 meeting rooms."
+          },
+          "conference_venues_overview": "Incheon has a total of 134 conference venues, including Songdo Convensia, Inspire Resort, and Paradise City.",
+          "hotels_with_event_space": [
+            "Sheraton Grand Incheon Hotel (largest event space)",
+            "Incheon Royal Hotel",
+            "Grand Hyatt Incheon",
+            "Orakai Songdo Park Hotel BW Premier",
+            "Oakwood Premier Incheon",
+            "Holiday Inn Incheon Songdo",
+            "Days Hotel & Suites Incheon Airport",
+            "Howard Johnson Incheon Airport",
+            "Ibis Styles Ambassador Incheon Airport",
+            "Benikea Incheon Airport Oceanside Hotel"
+          ],
+          "state_guest_house_service": "Grand Walkerhill Seoul (in Seoul) is also mentioned as providing services as a state guesthouse for high-ranking officials.",
+          "logistics_and_strategy": "Incheon is connecting its airport, city, and tourist attractions through a 'triangle network' with dedicated shuttle buses and multilingual staff. Additionally, the city is designing customized cultural experience programs for foreign visitors to explore major attractions and is organizing side events, including traditional performances, K-content showcases, and visits to industrial port sites.",
+          "strategic_analysis": "This approach goes beyond mere logistical support for a conference. It is a deliberate strategy to integrate the APEC meetings with Incheon's broader tourism and economic development goals. By showcasing its cultural assets and industrial capabilities, Incheon aims to leverage the influx of high-level visitors to enhance its 'global city brand.' The 'triangle network' implies an integrated, efficient visitor experience designed to maximize exposure to the city's offerings. This shows that the city views APEC not just as a diplomatic meeting but as a strategic marketing opportunity for its MICE (Meetings, Incentives, Conferences, Exhibitions) industry and its overall global standing. The investment in cultural immersion and industrial visits suggests a long-term vision to attract future business and tourism, recognizing that a positive experience during APEC can yield sustainable economic benefits."
+        },
+        {
+          "city_name": "Busan",
+          "description": "Busan is the venue for the APEC Ocean and Fisheries Ministerial Meeting (AOMM).",
+          "main_venues": [
+            "The Westin Josun Busan Hotel",
+            "APEC Nurimaru House (for Welcome Dinner)"
+          ],
+          "potential_venue": "BEXCO is also mentioned as a potential venue for APEC-related events.",
+          "recommended_hotels_and_services": {
+            "hotel": "Paradise Hotel Busan",
+            "description": "Paradise Hotel Busan is described as a luxurious beachfront venue with world-class amenities, offering a unique blend of coastal luxury and vibrant city life.",
+            "services": "Offering a complimentary shuttle service along with The Westin Josun Busan from Gimhae Airport and Busan Station for AOMM events."
+          }
+        }
+      ],
+      "summary_table": {
+        "table_name": "Table 2: Conference Venues and Recommended Hotels in APEC 2025 Host Cities",
+        "data": [
+          {
+            "city": "Gyeongju",
+            "main_conference_center": "Gyeongju Arts Center, Gyeongju Hwarang Village",
+            "recommended_major_hotels": "Lotte Hotel Seoul (training), leading hotels in Gyeongju",
+            "service_facility_notes": "Lotte Hotels & Resorts provides VIP protocol training; booking links via the official APEC CEO Summit website."
+          },
+          {
+            "city": "Jeju",
+            "main_conference_center": "Jeju International Convention Center (ICC Jeju)",
+            "recommended_major_hotels": "Jeju Shinhwa World Marriott Resort, Jeju Booyoung Hotel, Jeju KAL Hotel, Phoenix Island Resort, Seogwipo KAL Hotel, Hotel Bareve, Days Hotel Jeju Seogwipo Ocean, The We Hotel, Hotel Bridge Seogwipo, Mercure Ambassador Jeju, Seaes Hotel & Resort, Ramada Encore Jeju Seogwipo",
+            "service_facility_notes": "Jeju Island has completed a comprehensive inspection of transportation and accommodation; many hotels have conference spaces."
+          },
+          {
+            "city": "Incheon",
+            "main_conference_center": "Songdo ConvensiA",
+            "recommended_major_hotels": "Sheraton Grand Incheon Hotel, Incheon Royal Hotel, Grand Hyatt Incheon, Orakai Songdo Park Hotel BW Premier, Oakwood Premier Incheon, Holiday Inn Incheon Songdo, Days Hotel & Suites Incheon Airport, Howard Johnson Incheon Airport, Ibis Styles Ambassador Incheon Airport, Benikea Incheon Airport Oceanside Hotel, Grand Walkerhill Seoul (in Seoul)",
+            "service_facility_notes": "Songdo ConvensiA has 17,021 sq. ft. of exhibition space; the city has 134 conference venues; free shuttle service, multilingual volunteers."
+          },
+          {
+            "city": "Busan",
+            "main_conference_center": "The Westin Josun Busan Hotel, APEC Nurimaru House, BEXCO",
+            "recommended_major_hotels": "Paradise Hotel Busan, The Westin Josun Busan Hotel",
+            "service_facility_notes": "Provides free shuttle service from Gimhae Airport and Busan Station."
+          }
+        ]
+      }
+    },
+    "travel_guide": {
+      "title": "Entry and Travel Guide for South Korea",
+      "introduction": "For those attending APEC 2025, understanding entry procedures, health regulations, and domestic transportation is essential for a smooth trip.",
+      "entry_and_visa": {
+        "title": "Entry and Visa Procedures",
+        "k_eta_system": {
+          "name": "Korea Electronic Travel Authorization (K-ETA)",
+          "purpose": "For foreign visitors from visa-free countries, for tourism, visiting relatives, attending events/meetings, or business (excluding profit-making activities).",
+          "fee": "10,000 KRW (excluding a 3% card processing fee), non-refundable.",
+          "processing_time": "Can take more than 72 hours; early application is recommended.",
+          "validity": "3 years, for multiple entries. A new K-ETA is required if the passport is changed.",
+          "eligibility_check_url": "www.k-eta.go.kr"
+        },
+        "exemptions": {
+          "groups": [
+            "South Korean citizens",
+            "APEC Business Travel Card (ABTC) holders (except for US and Canadian citizens)",
+            "Registered foreigners (with a Registration Card)",
+            "UN passport holders",
+            "Transit passengers who do not clear immigration in Korea (except for Egypt, Sudan, Syria, and Yemen)",
+            "Holders of diplomatic and official passports from K-ETA required countries",
+            "Citizens from K-ETA eligible countries who are under 17 or over 65 years old"
+          ],
+          "temporary_exemption": "Some countries, including Singapore, are exempt from K-ETA until December 31, 2025."
+        },
+        "strategic_analysis": "South Korea's application of the K-ETA system while simultaneously providing numerous exemptions, especially for ABTC holders and certain age/nationality groups, demonstrates an effort to balance modern border control with facilitating tourism, particularly for business and MICE travel. This dual approach allows for pre-screening and digital management of short-term visitors, enhancing security and efficiency. However, the exemptions, particularly for ABTC holders, show a strategic decision to facilitate the entry of key business and diplomatic travelers, recognizing their importance for international events and economic exchange.",
+        "other_cases": "If not eligible for K-ETA, K-ETA application is denied, or the purpose of visit is not covered, an appropriate visa must be applied for. Most C-3 type visa applications must be submitted through designated visa agencies.",
+        "passport_validity": "Travelers can enter South Korea with a passport valid for less than 6 months as long as the passport remains valid for the entire duration of their stay."
+      },
+      "health_regulations": {
+        "title": "Health Regulations",
+        "vaccination_and_testing": "Vaccination is not a mandatory requirement for entry into South Korea. Currently, there are no on-arrival PCR testing requirements or other COVID-19 testing requirements.",
+        "e_arrival_card": {
+          "requirement": "From February 24, 2025, travelers will need to submit an 'e-Arrival card'.",
+          "url": "www.e-arrivalcard.go.kr",
+          "timing": "Within 3 days before arriving in South Korea."
+        },
+        "insurance_and_medication": "Purchasing travel insurance is a personal choice. Travelers can bring prescription medication for personal use; it is advisable to carry a doctor's note or prescription and keep it in its original packaging.",
+        "mask_policy": "Wearing a mask in public is voluntary in major South Korean cities, except in some hospitals and other medical facilities.",
+        "strategic_analysis": "South Korea's removal of most COVID-19 related restrictions and the requirement of only a new e-Arrival card indicates a return to full normalization in international travel, while adopting digital measures for more efficient passenger information management. The elimination of strict health screening measures (vaccinations, testing) shows a complete reopening of borders and confidence in managing public health without stringent travel restrictions. The introduction of the e-Arrival card, while a new step, is a digital administrative measure rather than a health screening one. This indicates that South Korea has transitioned from a pandemic-response travel framework to a more streamlined, digitally-supported immigration process."
+      },
+      "domestic_travel": {
+        "title": "Domestic Travel",
+        "infrastructure_and_shuttles": "South Korea stands out with its modern infrastructure, smart technology, and a convenient, safe, and seamless domestic transportation network. Host cities like Incheon and Busan will operate free shuttle services for participants from airports (Incheon, Gimhae) and train stations (Busan) to venues and hotels. Gyeongju will also have shuttle services from the airport to hotels and to the CEO Summit venue.",
+        "attendee_support": {
+          "volunteers": "Approximately 140 volunteers will be stationed at Incheon International Airport, event venues, and hotels.",
+          "staff": "Multilingual staff and trained volunteers will be deployed throughout Incheon to provide on-site services such as interpretation, wayfinding, and emergency support."
+        },
+        "kto_support_program": {
+          "name": "Gyeongbuk Plus Special Support Program",
+          "organization": "Korea Tourism Organization (KTO)",
+          "support": "Financial assistance (up to 140,000 KRW/person).",
+          "eligibility": "Groups of a minimum of 10 foreigners staying in Seoul for at least 2 nights.",
+          "purpose": "To promote MICE tourism."
+        }
+      }
+    }
+  },
+  "vietnam_context": {
+    "role_in_apec": {
+      "title": "Vietnam's Role in APEC",
+      "introduction": "Vietnam continues to affirm its active and responsible role within the APEC framework, not only through participation in important meetings but also by hosting events and shaping the future.",
+      "participation_in_2025": {
+        "event": "APEC Ministers Responsible for Trade (MRT) Meeting in Jeju",
+        "date": "May 15, 2025",
+        "delegation_head": "Minister of Industry and Trade Nguyen Hong Dien",
+        "key_points": "Emphasized the transformative role of AI in trade and its importance in Vietnam's national strategy for AI until 2030. Welcomed APEC's AI initiative and supported the proposal to establish an APEC AI Standards Forum."
+      },
+      "hosting_events": [
+        {
+          "event_name": "3rd APEC Business Advisory Council (ABAC) Meeting",
+          "year": 2025,
+          "location": "Hai Phong, Vietnam",
+          "date": "July 15-18, 2025",
+          "significance": "A key event in preparation for the CEO Summit and APEC Leaders' Week, providing an opportunity for the regional business community to meet and exchange ideas."
+        },
+        {
+          "event_name": "APEC Host Economy",
+          "year": 2027,
+          "location": "Kien Giang province (Phu Quoc) proposed for major events.",
+          "status": "Confirmed. Deputy Prime Minister Nguyen Chi Dung agreed to develop special mechanisms for major projects related to APEC 2027."
+        }
+      ],
+      "strategic_analysis": "Vietnam's active participation in AI discussions and its hosting of an ABAC meeting in 2025, along with being confirmed as the APEC 2027 host, demonstrates a deep and continuous international integration strategy, particularly in the digital economy and technology sectors. This pattern of engagement—from actively contributing to current thematic discussions (AI), to hosting a key business-focused meeting (ABAC), and securing a future host role—showcases Vietnam's deliberate and sustained commitment to APEC. Vietnam's national strategies, including digital transformation, AI development, and business-friendly policies, are perfectly aligned with APEC's forward-looking agenda. This indicates that Vietnam is not just a passive member but a strategic participant in APEC, proactively shaping discussions and leveraging the forum for its own development goals, especially in the digital economy and technology. The early planning for APEC 2027 in Kien Giang also shows Vietnam's long-term vision in showcasing its economic potential and integrating its regions into the broader APEC framework.",
+      "initiatives_and_contributions": {
+        "title": "Vietnam's Initiatives and Contributions within the APEC Framework",
+        "focus_areas": "Prioritized development of science, technology, and innovation, fostering the startup ecosystem, enhancing human resources, and promoting comprehensive policies on ethnicity, religion, gender, children, and the elderly.",
+        "digital_transformation": "Actively encouraging businesses to adopt digital tools, optimize e-commerce platforms, and strengthen cybersecurity measures as part of the National Digital Transformation Strategy.",
+        "foreign_investment": "Improving investment regulations and reducing unnecessary business barriers. The amended Law on Investment (effective 2025) aims to create a more transparent and investor-friendly environment, reinforcing its reputation as a top FDI destination in Southeast Asia.",
+        "sdg_ranking": "Ranked 54th out of 166 countries in the Sustainable Development Goals (SDG) Index, demonstrating balanced progress across economic, social, and environmental aspects."
+      }
+    },
+    "culture_and_tourism": {
+      "title": "Culture and Tourism: Vietnam & Phu Quoc",
+      "vietnam_overview": {
+        "culture": {
+          "title": "Overview of Vietnamese Culture",
+          "description": "Vietnamese culture is a diverse amalgamation of 54 ethnic groups, reflecting customs, rituals, history, and beliefs passed down through generations.",
+          "core_values": {
+            "family_unit": "Emphasis on collectivism, prioritizing family welfare and reputation over individual desires. Multi-generational households are common, fostering strong bonds.",
+            "respect": "(Sự Tôn Trọng) Paramount in social interactions, shown through polite language, deference to elders, and awareness of social hierarchy.",
+            "harmony": "(Hài Hòa) Highly valued; maintaining harmony and avoiding conflict is a priority. Smooth social interactions are preferred over direct confrontation.",
+            "face": "Preserving one's own and others' dignity and social standing is extremely important."
+          },
+          "spiritual_context": "Primarily shaped by the 'Three Teachings' (Tam Giáo) – a syncretic blend of Mahayana Buddhism, Confucianism, and Taoism, often intertwined with indigenous animist beliefs and ancestor worship. Ancestor worship is a core aspect of the culture."
+        },
+        "festivals_2025": {
+          "title": "Prominent Cultural Festivals and Events in Vietnam (possibly in 2025)",
+          "introduction": "Vietnam has many unique cultural festivals, most held according to the Lunar Calendar, offering deep cultural experiences.",
+          "festivals_list": [
+            {
+              "name": "Tet Nguyen Dan (Tet)",
+              "date": "January 29 - February 2, 2025 (1st-3rd day of the first lunar month)",
+              "description": "The most important festival, marking the arrival of spring and the biggest public holiday. Ideal for experiencing traditional cuisine, visiting temples, and connecting with local culture."
+            },
+            {
+              "name": "Hung Kings' Temple Festival",
+              "date": "April 7, 2025 (10th day of the 3rd lunar month)",
+              "description": "Honoring the legendary Hung Kings, the founders of the nation."
+            },
+            {
+              "name": "Hue Festival and Hue Traditional Craft Festival",
+              "date": "First week of April 2025 (3rd lunar month). Hue Festival 2025 will run from Jan 1 to Dec 31, 2025.",
+              "description": "A year-long festival with many cultural and artistic events."
+            },
+            {
+              "name": "Lim Festival",
+              "date": "January 31 - February 2, 2025 (1st lunar month)",
+              "description": "Featuring Quan ho singing, a traditional folk song style from the Red River Delta region."
+            },
+            {
+              "name": "Perfume Pagoda Festival",
+              "date": "January 30 - April 20, 2025 (1st to 3rd lunar month)",
+              "description": "Attracts a large number of Buddhist pilgrims and tourists for pilgrimage and sightseeing."
+            },
+            {
+              "name": "Lantern Festival (Mid-Autumn Festival)",
+              "date": "September 17, 2025 (15th day of the 8th lunar month)",
+              "description": "Features colorful lantern processions, lion dances, and sharing of mooncakes, symbolizing completeness and unity."
+            },
+            {
+              "name": "Da Nang International Fireworks Festival 2025",
+              "date": "May 31 - July 12, 2025",
+              "description": "A spectacular fireworks display over the Han River."
+            },
+            {
+              "name": "21st Southern Fruit Festival",
+              "date": "June 1 - August 31, 2025",
+              "description": "Showcasing the diversity and richness of Vietnamese tropical fruits."
+            }
+          ],
+          "strategic_analysis": "The fact that Vietnam's major festivals are held according to the Lunar Calendar and last for several days or even months, especially Tet, shows the deep connection between traditional culture and modern life. This offers unique and profound cultural experiences. These festivals are not just single events but extended periods of celebration, deeply embedded in the daily life and beliefs of the Vietnamese people, rather than being mere tourist attractions. Their nationwide celebration means cultural immersion is accessible in different regions."
+        }
+      },
+      "phu_quoc_focus": {
+        "title": "Phu Quoc Tourism",
+        "introduction": "Phu Quoc, Vietnam's largest island, is an attractive destination with its pristine natural beauty and excellent cuisine.",
+        "attractions": [
+          {
+            "name": "Ho Quoc Pagoda",
+            "description": "A must-visit spiritual destination with a serene atmosphere and stunning views of the mountains and sea."
+          },
+          {
+            "name": "Bai Sao (Starfish Beach)",
+            "description": "Listed by CN Traveler as one of the Top 10 most pristine and quiet beaches in the world, notable for its fine white sand, clear blue water, and numerous vibrant orange starfish."
+          },
+          {
+            "name": "Hon May Rut and Hon Gam Ghi",
+            "description": "Beautiful islands with crystal-clear water and white sandy beaches, a paradise for diving and snorkeling to explore coral reefs."
+          },
+          {
+            "name": "Bai Dai (Long Beach)",
+            "description": "Stretching along the west coast, home to many resorts and restaurants, an ideal spot for watching sunsets."
+          },
+          {
+            "name": "Phu Quoc National Park",
+            "description": "Located in the north, offering hiking trails, waterfalls, and rich wildlife for adventurous travelers."
+          },
+          {
+            "name": "Other Attractions",
+            "description": "Vinpearl Safari (wildlife conservation park) and Dinh Cau Night Market (for local cuisine and shopping) are also worth exploring."
+          }
+        ],
+        "cuisine": {
+          "title": "Phu Quoc's Special Cuisine (Dishes to Try)",
+          "introduction": "Phu Quoc's cuisine is famous for its fresh and unique seafood dishes.",
+          "summary_table": {
+            "table_name": "Table 3: Phu Quoc's Special Dishes to Try",
+            "data": [
+              {
+                "dish_name": "Raw Herring Salad (Goi ca trich)",
+                "brief_description": "Thinly sliced raw herring mixed with grated coconut, onion, herbs, roasted peanuts.",
+                "flavor_characteristics": "Fresh, cool, a blend of sour, spicy, salty, sweet from the unique fish sauce."
+              },
+              {
+                "dish_name": "Bun Ken",
+                "brief_description": "Fresh noodles with a broth made from ground fish, coconut milk, curry powder, lemongrass.",
+                "flavor_characteristics": "Creamy, fragrant, rich, with a golden-yellow color."
+              },
+              {
+                "dish_name": "Ham Ninh Crab",
+                "brief_description": "Fresh live crab, firm, naturally sweet meat.",
+                "flavor_characteristics": "Sweet, fragrant meat; can be steamed, stir-fried with tamarind, or in porridge."
+              },
+              {
+                "dish_name": "Bun Quay (Stirring Noodles)",
+                "brief_description": "Freshly made noodles, fish cake, shrimp paste, clear broth, self-mixed dipping sauce.",
+                "flavor_characteristics": "Chewy noodles, crispy fish cake, a customizable dipping sauce."
+              },
+              {
+                "dish_name": "Phu Quoc Free-Range Chicken",
+                "brief_description": "Naturally raised chicken, firm, fragrant meat.",
+                "flavor_characteristics": "Firm, sweet meat; often grilled with salt and chili, steamed with lime leaves, or in a 'lá é' hotpot."
+              },
+              {
+                "dish_name": "Sea Urchin (Cau gai)",
+                "brief_description": "Nutritious seafood, can be cooked in porridge, eaten raw, or grilled with scallion oil.",
+                "flavor_characteristics": "Creamy, fragrant, rich in nutrients."
+              },
+              {
+                "dish_name": "Banh bo thot not (Palm Sugar Sponge Cake)",
+                "brief_description": "Cake made from rice flour, palm sugar, and coconut milk.",
+                "flavor_characteristics": "Soft, fluffy, fragrant with coconut and palm sugar, with a light sweetness."
+              },
+              {
+                "dish_name": "Slipper Lobster",
+                "brief_description": "A small lobster-like crustacean with firm, sweet meat.",
+                "flavor_characteristics": "Sweet, chewy meat; usually steamed with beer or grilled."
+              },
+              {
+                "dish_name": "Squid fried with fish sauce",
+                "brief_description": "Fresh squid fried with fish sauce, sugar, garlic, and chili.",
+                "flavor_characteristics": "Fragrant, savory, a harmonious salty-sweet taste, with chewy and crispy squid."
+              }
+            ]
+          }
+        },
+        "events_and_tours": {
+          "status": "Existing documents do not provide specific information about cultural events or festivals unique to Phu Quoc in 2025.",
+          "available_experiences": "Phu Quoc is notable for its abundance of year-round tours and nature experiences. Visitors can join cable car tours, island-hopping boat tours for snorkeling, experience life in fishing villages, take food tours by bicycle, and explore the island by private car.",
+          "strategic_analysis": "Although there is a lack of information on specific cultural festivals for Phu Quoc in 2025, the abundance of tours and nature experiences indicates that the island's tourism focus is on its natural beauty and outdoor activities. This suggests that Phu Quoc's appeal lies primarily in its pristine beaches and marine ecosystems, rather than seasonal cultural events. Visitors should expect an experience focused on relaxation, adventure, and culinary exploration, rather than large-scale cultural festivals."
+        }
+      }
+    }
+  }
+}

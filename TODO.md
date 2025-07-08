@@ -3,14 +3,12 @@
 #### **Phase 0: Project Setup & Initialization**
 
 - [x] Initialize a new Git repository on GitHub.
-- [ ] Set up the local Python virtual environment (e.g., using `venv` or `conda`).
-- [ ] Create the initial project directory structure:
+- [x] Set up the local Python virtual environment (e.g., using `venv` or `conda`).
+- [x] Create the initial project directory structure:
   - `backend/`
   - `demo/`
-  - `data/`
-  - `scripts/`
 - [ ] Create a `requirements.txt` file and add initial libraries (`fastapi`, `streamlit`, `langchain`, `openai`, etc.).
-- [ ] Create a `.gitignore` file to exclude virtual environments, `.env` files, and `__pycache__`.
+- [x] Create a `.gitignore` file to exclude virtual environments, `.env` files, and `__pycache__`.
 
 ---
 
