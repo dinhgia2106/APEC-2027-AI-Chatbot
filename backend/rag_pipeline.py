@@ -9,9 +9,11 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-# Import LLaMA3 function
+# Ensure project root is on sys.path for module imports
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from llm import query_llm
+
+# Import the LLM helper function
+from backend.llm import query_llm
 
 
 class RAGPipeline:
