@@ -17,9 +17,22 @@ def flatten(data: Any, parent_key: str = "") -> List[Tuple[str, str]]:
     items: List[Tuple[str, str]] = []
 
     if isinstance(data, dict):
+        # Xử lý đặc biệt cho meeting objects
+        if "event_title" in data and "date" in data:
+            # Tạo chunk kết hợp cho meeting
+            combined_text = f"{data['event_title']}"
+            if "date" in data:
+                combined_text += f" diễn ra ngày {data['date']}"
+            if "venue" in data:
+                combined_text += f" tại {data['venue']}"
+            
+            items.append((f"{parent_key}.combined", combined_text))
+        
+        # Tiếp tục flatten bình thường
         for k, v in data.items():
             new_key = f"{parent_key}.{k}" if parent_key else k
             items.extend(flatten(v, new_key))
+            
     elif isinstance(data, list):
         for idx, v in enumerate(data):
             new_key = f"{parent_key}[{idx}]"
@@ -46,6 +59,13 @@ def main() -> None:
     # Tách key và text
     keys = [k for k, _ in entries]
     texts = [t for _, t in entries]
+
+    print(f"Đã tạo {len(texts)} chunks để embedding")
+    
+    # Debug: In ra một vài chunk sample
+    print("\nMột vài chunk mẫu:")
+    for i, (key, text) in enumerate(entries[:10]):
+        print(f"{i+1}. {key}: {text}")
 
     # Initialize the multilingual model
     model_name = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
