@@ -3,6 +3,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
+from datetime import datetime
 
 import faiss
 import numpy as np
@@ -15,12 +16,12 @@ from llm import query_llm
 
 class RAGPipeline:
     """
-    Lớp RAG Pipeline tích hợp tất cả các thành phần:
-    - Embedding model để encode query
-    - FAISS index để tìm kiếm vector similarity
-    - Mapping từ vector IDs về key paths  
-    - Dữ liệu gốc để truy xuất text đầy đủ
-    - LLM để sinh câu trả lời
+    The RAG Pipeline class integrates all components:
+    - An embedding model to encode the query.
+    - A FAISS index for vector similarity search.
+    - A mapping from vector IDs to key paths.
+    - The original data source for retrieving full text.
+    - An LLM to generate the final answer.
     """
     
     def __init__(self, 
@@ -29,82 +30,150 @@ class RAGPipeline:
                  embed_dir: str = "backend/Embed", 
                  vector_dir: str = "backend/VectorStore"):
         """
-        Khởi tạo RAG Pipeline
+        Initializes the RAG Pipeline.
         
         Args:
-            model_name: Tên model SentenceTransformer
-            data_dir: Thư mục chứa data.json
-            embed_dir: Thư mục chứa embeddings
-            vector_dir: Thư mục chứa FAISS index
+            model_name: The name of the SentenceTransformer model.
+            data_dir: The directory containing data.json.
+            embed_dir: The directory containing embeddings.
+            vector_dir: The directory containing the FAISS index.
         """
         self.root = Path(__file__).resolve().parent.parent
         
         # 1. Load embedding model
-        print("Đang load model embedding...")
+        print("Loading embedding model...")
         self.model = SentenceTransformer(model_name)
         
         # 2. Load FAISS index
         index_path = self.root / vector_dir / "apec.index"
         if not index_path.exists():
-            raise FileNotFoundError(f"FAISS index không tìm thấy tại: {index_path}")
-        print("Đang load FAISS index...")
+            raise FileNotFoundError(f"FAISS index not found at: {index_path}")
+        print("Loading FAISS index...")
         self.index = faiss.read_index(str(index_path))
         
         # 3. Load id2key mapping
         id2key_path = self.root / vector_dir / "id2key.json"
         if not id2key_path.exists():
-            raise FileNotFoundError(f"File id2key.json không tìm thấy tại: {id2key_path}")
+            raise FileNotFoundError(f"File id2key.json not found at: {id2key_path}")
         with open(id2key_path, "r", encoding="utf-8") as f:
             self.id2key = json.load(f)
         
-        # 4. Load dữ liệu gốc
+        # 4. Load original data
         data_path = self.root / data_dir / "data.json"
         if not data_path.exists():
-            raise FileNotFoundError(f"File data.json không tìm thấy tại: {data_path}")
+            raise FileNotFoundError(f"File data.json not found at: {data_path}")
         with open(data_path, "r", encoding="utf-8") as f:
             self.data = json.load(f)
         
-        print(f"RAG Pipeline đã sẵn sàng với {len(self.id2key)} vectors trong index.")
+        print(f"RAG Pipeline is ready with {len(self.id2key)} vectors in the index.")
     
     def detect_language(self, text: str) -> str:
         """
-        Phát hiện ngôn ngữ của text dựa trên ký tự đặc trưng
+        Detects the language of the text based on characteristic characters.
         
         Args:
-            text: Chuỗi text cần phát hiện ngôn ngữ
+            text: The text string to detect the language of.
             
         Returns:
-            'vi' cho tiếng Việt, 'en' cho tiếng Anh
+            'vi' for Vietnamese, 'en' for English.
         """
-        # Ký tự đặc trưng tiếng Việt với dấu (bao gồm cả chữ hoa và chữ thường)
+        # Characteristic Vietnamese characters with diacritics (including uppercase and lowercase)
         vietnamese_chars = r'[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđĐÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ]'
         
-        # Kiểm tra ký tự đặc trưng tiếng Việt
+        # Check for characteristic Vietnamese characters
         if re.search(vietnamese_chars, text):
             return 'vi'
         else:
             return 'en'
+    
+    def _is_list_all_query(self, query: str) -> bool:
+        """
+        Detects if the query is a request to list all items (e.g., "list all meetings").
+        """
+        list_patterns = [
+            r'\b(list|all|tất cả|danh sách|liệt kê)\b.*\b(meeting|meetings|cuộc họp|sự kiện|event)\b',
+            r'\b(toàn bộ|hết|đầy đủ)\b.*\b(lịch|schedule|meeting)\b',
+            r'\b(show|display|hiển thị)\b.*\b(all|tất cả)\b.*\b(meeting|event)\b'
+        ]
+        
+        for pattern in list_patterns:
+            if re.search(pattern, query, re.IGNORECASE):
+                return True
+        return False
+    
+    def _is_today_schedule_query(self, query: str) -> bool:
+        """
+        Detects if the query is about today's schedule.
+        """
+        today_patterns = [
+            r'\b(today|hôm nay|ngày hôm nay)\b.*\b(event|events|sự kiện|cuộc họp|meeting|lịch)\b',
+            r'\b(lịch|schedule)\b.*\b(today|hôm nay|ngày hôm nay)\b',
+            r'\b(sự kiện|event|meeting)\b.*\b(today|hôm nay|ngày hôm nay)\b'
+        ]
+        
+        for pattern in today_patterns:
+            if re.search(pattern, query, re.IGNORECASE):
+                return True
+        return False
+    
+    def _preprocess_query_with_date(self, query: str) -> tuple[str, str]:
+        """
+        Preprocesses the query, adding date information if necessary.
+        
+        Returns:
+            A tuple (enhanced_query, date_info).
+        """
+        today = datetime.now()
+        date_info = f"Current date: {today.strftime('%Y-%m-%d')} ({today.strftime('%A, %B %d, %Y')})"
+        
+        if self._is_today_schedule_query(query):
+            # Add the current date to the query for better search results
+            enhanced_query = f"{query} {today.strftime('%Y-%m-%d')} {today.strftime('%B %Y')}"
+            return enhanced_query, date_info
+        
+        return query, ""
+    
+    def _get_all_meetings_context(self) -> str:
+        """
+        Gets all meetings from the data to answer "list all" queries.
+        """
+        try:
+            meetings = self.data["apec_2025_korea"]["schedule"]["meetings"]
+            context_parts = []
+            
+            for i, meeting in enumerate(meetings):
+                combined_text = f"{meeting['event_title']}"
+                if "date" in meeting and meeting["date"]:
+                    combined_text += f" takes place on {meeting['date']}"
+                if "venue" in meeting and meeting["venue"]:
+                    combined_text += f" at {meeting['venue']}"
+                
+                context_parts.append(f"{i+1}. {combined_text}")
+            
+            return "\n".join(context_parts)
+        except (KeyError, IndexError) as e:
+            return f"[Error retrieving list of meetings: {e}]"
 
     def _get_value_from_keypath(self, keypath: str) -> str:
         """
-        Truy xuất giá trị từ dữ liệu gốc theo key path
+        Retrieves a value from the original data using a key path.
         
         Args:
-            keypath: Đường dẫn key như "apec_general_info.title"
+            keypath: The key path, e.g., "apec_general_info.title".
             
         Returns:
-            Chuỗi text tương ứng
+            The corresponding text string.
         """
         try:
-            # Xử lý đặc biệt cho combined keypaths
+            # Special handling for combined keypaths
             if keypath.endswith(".combined"):
-                # Tái tạo combined text từ dữ liệu gốc
-                base_keypath = keypath[:-9]  # Loại bỏ ".combined"
+                # Recreate the combined text from the original data
+                base_keypath = keypath[:-9]  # Remove ".combined"
                 parts = base_keypath.split(".")
                 current = self.data
                 
                 for part in parts:
-                    # Xử lý array index như [0], [1]
+                    # Handle array indices like [0], [1]
                     if "[" in part and "]" in part:
                         key = part.split("[")[0]
                         index = int(part.split("[")[1].split("]")[0])
@@ -112,23 +181,23 @@ class RAGPipeline:
                     else:
                         current = current[part]
                 
-                # Tái tạo combined text giống như trong embed_data.py
+                # Recreate the combined text as done in embed_data.py
                 if isinstance(current, dict) and "event_title" in current and "date" in current:
                     combined_text = f"{current['event_title']}"
                     if "date" in current:
-                        combined_text += f" diễn ra ngày {current['date']}"
+                        combined_text += f" takes place on {current['date']}"
                     if "venue" in current:
-                        combined_text += f" tại {current['venue']}"
+                        combined_text += f" at {current['venue']}"
                     return combined_text
                 else:
-                    return f"[Không thể tái tạo combined text cho {keypath}]"
+                    return f"[Could not recreate combined text for {keypath}]"
             
-            # Xử lý bình thường cho các keypath khác
+            # Normal handling for other keypaths
             parts = keypath.split(".")
             current = self.data
             
             for part in parts:
-                # Xử lý array index như [0], [1]
+                # Handle array indices like [0], [1]
                 if "[" in part and "]" in part:
                     key = part.split("[")[0]
                     index = int(part.split("[")[1].split("]")[0])
@@ -138,29 +207,29 @@ class RAGPipeline:
             
             return str(current)
         except (KeyError, IndexError, ValueError) as e:
-            return f"[Lỗi truy xuất keypath {keypath}: {e}]"
+            return f"[Error retrieving keypath {keypath}: {e}]"
     
     def retrieve(self, query: str, k: int = 5) -> str:
         """
-        Tìm kiếm context liên quan từ query
+        Retrieves relevant context for a given query.
         
         Args:
-            query: Câu hỏi của người dùng
-            k: Số lượng kết quả trả về
+            query: The user's query.
+            k: The number of results to return.
             
         Returns:
-            Chuỗi context được ghép từ các đoạn văn bản liên quan
+            A string of context concatenated from relevant text snippets.
         """
-        # 1. Encode query thành vector
+        # 1. Encode the query into a vector
         query_vector = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)[0]
         
-        # 2. Tìm kiếm k vectors gần nhất
+        # 2. Search for the k nearest vectors
         scores, indices = self.index.search(query_vector.reshape(1, -1), k)
         
-        # 3. Chuyển đổi indices thành key paths
+        # 3. Convert indices to key paths
         context_parts = []
         for i, (score, idx) in enumerate(zip(scores[0], indices[0])):
-            if idx < 0:  # FAISS trả về -1 nếu không tìm thấy
+            if idx < 0:  # FAISS returns -1 if not found
                 continue
                 
             keypath = self.id2key[idx]
@@ -172,19 +241,19 @@ class RAGPipeline:
     
     def generate(self, context: str, query: str) -> str:
         """
-        Sinh câu trả lời từ LLM với context và query
+        Generates an answer from the LLM using the context and query.
         
         Args:
-            context: Ngữ cảnh từ hàm retrieve
-            query: Câu hỏi gốc
+            context: The context from the retrieve function.
+            query: The original query.
             
         Returns:
-            Câu trả lời từ LLM
+            The answer from the LLM.
         """
-        # Phát hiện ngôn ngữ
+        # Detect language
         language = self.detect_language(query)
         
-        # Template cho tiếng Việt
+        # Template for Vietnamese
         VIETNAMESE_PROMPT_TEMPLATE = """Bạn là một trợ lý AI hữu ích và thân thiện của sự kiện APEC và về văn hóa Việt Nam.
 Hãy sử dụng các thông tin được cung cấp dưới đây để trả lời câu hỏi của người dùng một cách chính xác và súc tích bằng tiếng Việt.
 
@@ -200,14 +269,14 @@ Câu hỏi: {query}
 
 Trả lời ngắn gọn bằng tiếng Việt:"""
 
-        # Template cho tiếng Anh
+        # Template for English
         ENGLISH_PROMPT_TEMPLATE = """You are a helpful and friendly AI assistant for APEC events and Vietnamese culture.
 Please use the information provided below to answer the user's question accurately and concisely in English.
 
 IMPORTANT: 
-- Answer directly without using <think> or any tags
-- Keep answers concise and to the point
-- If information is not available in the context, briefly respond that you don't have information about that topic
+- Answer directly without using <think> or any tags.
+- Keep answers concise and to the point.
+- If information is not available in the context, briefly respond that you don't have information about that topic.
 
 Context:
 {context}
@@ -216,45 +285,43 @@ Question: {query}
 
 Concise answer in English:"""
         
-        # Chọn template phù hợp
+        # Select the appropriate template
         if language == 'en':
             template = ENGLISH_PROMPT_TEMPLATE
-            print("Đã phát hiện ngôn ngữ: Tiếng Anh")
+            print("Detected language: English")
         else:
             template = VIETNAMESE_PROMPT_TEMPLATE
-            print("Đã phát hiện ngôn ngữ: Tiếng Việt")
+            print("Detected language: Vietnamese")
         
-        # Tạo prompt hoàn chỉnh
+        # Create the full prompt
         prompt = template.format(context=context, query=query)
         
-        # Gọi LLM local qua Ollama
+        # Call the local LLM via Ollama
         try:
             response = query_llm(prompt)
-            # Post-process để loại bỏ think tags và clean up
+            # Post-process to remove think tags and clean up
             cleaned_response = self._clean_response(response)
             return cleaned_response
         except Exception as e:
-            return f"Lỗi khi gọi LLM: {e}"
+            return f"Error calling LLM: {e}"
     
     def _clean_response(self, response: str) -> str:
         """
-        Làm sạch response từ LLM, loại bỏ think tags và metadata
+        Cleans the response from the LLM, removing think tags and metadata.
         
         Args:
-            response: Raw response từ LLM
+            response: The raw response from the LLM.
             
         Returns:
-            Cleaned response
+            The cleaned response.
         """
-        import re
-        
-        # Loại bỏ <think>...</think> tags
+        # Remove <think>...</think> tags
         cleaned = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL)
         
-        # Loại bỏ <language>...</language> tags  
+        # Remove <language>...</language> tags  
         cleaned = re.sub(r'<language>.*?</language>', '', cleaned, flags=re.DOTALL)
         
-        # Loại bỏ các dòng trống thừa
+        # Remove extra blank lines
         cleaned = re.sub(r'\n\s*\n', '\n', cleaned)
         
         # Trim whitespace
@@ -264,52 +331,74 @@ Concise answer in English:"""
     
     def answer(self, query: str, k: int = 5) -> Dict[str, Any]:
         """
-        Trả lời câu hỏi hoàn chỉnh: retrieve context + generate answer
+        Provides a complete answer to a query by retrieving context and generating a response.
         
         Args:
-            query: Câu hỏi của người dùng
-            k: Số lượng context documents
+            query: The user's query.
+            k: The number of context documents to retrieve.
             
         Returns:
-            Dictionary chứa query, context, answer
+            A dictionary containing the query, context, and answer.
         """
-        print(f"Đang xử lý câu hỏi: {query}")
+        print(f"Processing query: {query}")
         
-        # 1. Retrieve context
-        print("Đang tìm kiếm context...")
-        context = self.retrieve(query, k)
+        # Preprocess query and get date info if needed
+        enhanced_query, date_info = self._preprocess_query_with_date(query)
+        
+        # 1. Retrieve context with special logic
+        print("Retrieving context...")
+        
+        if self._is_list_all_query(query):
+            # For "list all" queries, fetch all meetings
+            print('Detected "list all" query - fetching all meetings...')
+            context = self._get_all_meetings_context()
+        else:
+            # For "today schedule" queries, increase k to find more results
+            if self._is_today_schedule_query(query):
+                print('Detected "today schedule" query - increasing search count...')
+                k = min(k * 3, 20)  # Increase by 3x but not more than 20
+                
+            # Retrieve context normally, using the enhanced query if available
+            search_query = enhanced_query if enhanced_query != query else query
+            context = self.retrieve(search_query, k)
+            
+            # Add date info if necessary
+            if date_info:
+                context = f"{date_info}\n\n{context}"
         
         # 2. Generate answer
-        print("Đang sinh câu trả lời...")
+        print("Generating answer...")
         answer = self.generate(context, query)
         
         return {
             "query": query,
+            "enhanced_query": enhanced_query if enhanced_query != query else None,
             "context": context,
-            "answer": answer
+            "answer": answer,
+            "date_info": date_info if date_info else None
         }
 
 
 def main():
-    """Demo function để test RAG Pipeline"""
+    """Demo function to test the RAG Pipeline."""
     try:
-        # Khởi tạo pipeline
+        # Initialize the pipeline
         rag = RAGPipeline()
         
-        # Test với một câu hỏi
-        test_query = "APEC có bao nhiêu thành viên?"
+        # Test with a sample query
+        test_query = "How many members does APEC have?"
         result = rag.answer(test_query)
         
         print("=" * 80)
-        print("KẾT QUẢ TEST RAG PIPELINE")
+        print("RAG PIPELINE TEST RESULT")
         print("=" * 80)
-        print(f"Câu hỏi: {result['query']}")
-        print(f"\nContext tìm được:\n{result['context']}")
-        print(f"\nCâu trả lời:\n{result['answer']}")
+        print(f"Query: {result['query']}")
+        print(f"\nRetrieved Context:\n{result['context']}")
+        print(f"\nAnswer:\n{result['answer']}")
         
     except Exception as e:
-        print(f"Lỗi: {e}")
+        print(f"Error: {e}")
 
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -17,18 +17,18 @@ def flatten(data: Any, parent_key: str = "") -> List[Tuple[str, str]]:
     items: List[Tuple[str, str]] = []
 
     if isinstance(data, dict):
-        # Xử lý đặc biệt cho meeting objects
+        # Special handling for meeting objects
         if "event_title" in data and "date" in data:
-            # Tạo chunk kết hợp cho meeting
+            # Create a combined chunk for the meeting
             combined_text = f"{data['event_title']}"
             if "date" in data:
-                combined_text += f" diễn ra ngày {data['date']}"
+                combined_text += f" takes place on {data['date']}"
             if "venue" in data:
-                combined_text += f" tại {data['venue']}"
+                combined_text += f" at {data['venue']}"
             
             items.append((f"{parent_key}.combined", combined_text))
         
-        # Tiếp tục flatten bình thường
+        # Continue flattening normally
         for k, v in data.items():
             new_key = f"{parent_key}.{k}" if parent_key else k
             items.extend(flatten(v, new_key))
@@ -56,14 +56,14 @@ def main() -> None:
     data = load_json(json_path)
     entries = flatten(data)
 
-    # Tách key và text
+    # Separate keys and texts
     keys = [k for k, _ in entries]
     texts = [t for _, t in entries]
 
-    print(f"Đã tạo {len(texts)} chunks để embedding")
+    print(f"Created {len(texts)} chunks for embedding")
     
-    # Debug: In ra một vài chunk sample
-    print("\nMột vài chunk mẫu:")
+    # Debug: Print some sample chunks
+    print("\nSome sample chunks:")
     for i, (key, text) in enumerate(entries[:10]):
         print(f"{i+1}. {key}: {text}")
 
@@ -82,4 +82,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main() 
+    main()

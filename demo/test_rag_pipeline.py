@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Demo test RAG Pipeline cho APEC 2027 AI Chatbot
+Demo to test the RAG Pipeline for the APEC 2027 AI Chatbot.
 
-Chạy script này để test khả năng trả lời câu hỏi của RAG Pipeline.
-Đảm bảo đã chạy các bước sau trước khi test:
-1. python backend/data/crawler.py (crawl dữ liệu)
-2. python backend/Embed/embed_data.py (tạo embeddings)
-3. python backend/VectorStore/build_faiss_index.py (xây dựng FAISS index)
-4. Khởi động Ollama server với LLaMA3: ollama serve
+Run this script to test the question-answering capabilities of the RAG Pipeline.
+Ensure you have completed the following steps before testing:
+1. python backend/data/crawler.py (to crawl data)
+2. python backend/Embed/embed_data.py (to create embeddings)
+3. python backend/VectorStore/build_faiss_index.py (to build the FAISS index)
+4. Start the Ollama server with LLaMA3: ollama serve
 
 Usage:
     cd demo
@@ -17,22 +17,22 @@ Usage:
 import sys
 from pathlib import Path
 
-# Thêm backend vào Python path
+# Add the backend directory to the Python path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 from backend.rag_pipeline import RAGPipeline
 
 
 def test_questions():
-    """Danh sách câu hỏi test"""
+    """List of test questions."""
     questions = [
-        "APEC có bao nhiêu thành viên?",
-        "Việt Nam có phải là thành viên APEC không?",
-        "APEC 2025 sẽ diễn ra ở đâu?",
-        "Khi nào diễn ra cuộc họp Informal Senior Officials’ Meeting (ISOM)?",
-        "Các thành phố nào ở Hàn Quốc sẽ tổ chức APEC 2025?",
-        "Mission của APEC là gì?",
-        "APEC Vision 2040 nói về điều gì?",
+        "How many members does APEC have?",
+        "Is Vietnam a member of APEC?",
+        "Where will APEC 2025 take place?",
+        "When does the Informal Senior Officials’ Meeting (ISOM) take place?",
+        "Which cities in South Korea will host APEC 2025?",
+        "What is APEC's mission?",
+        "What is the APEC Vision 2040 about?",
         "What is APEC's mission?",
         "When will APEC 2025 take place?",
     ]
@@ -40,18 +40,18 @@ def test_questions():
 
 
 def interactive_mode(rag_pipeline):
-    """Chế độ hỏi đáp tương tác"""
+    """Interactive question-and-answer mode."""
     print("\n" + "="*80)
-    print("CHẾ ĐỘ HỎI ĐÁP TƯƠNG TÁC")
+    print("INTERACTIVE Q&A MODE")
     print("="*80)
-    print("Nhập câu hỏi của bạn (hoặc 'quit' để thoát):")
+    print("Enter your question (or 'quit' to exit):")
     
     while True:
         try:
-            user_query = input("\nCâu hỏi: ").strip()
+            user_query = input("\nQuestion: ").strip()
             
-            if user_query.lower() in ['quit', 'exit', 'q', 'thoát']:
-                print("Tạm biệt!")
+            if user_query.lower() in ['quit', 'exit', 'q']:
+                print("Goodbye!")
                 break
                 
             if not user_query:
@@ -59,90 +59,90 @@ def interactive_mode(rag_pipeline):
                 
             result = rag_pipeline.answer(user_query)
             
-            print(f"\nCâu trả lời: {result['answer']}")
+            print(f"\nAnswer: {result['answer']}")
             print("-" * 60)
             
         except KeyboardInterrupt:
-            print("\nTạm biệt!")
+            print("\nGoodbye!")
             break
         except Exception as e:
-            print(f"Lỗi: {e}")
+            print(f"Error: {e}")
 
 
 def batch_test_mode(rag_pipeline):
-    """Chế độ test hàng loạt với câu hỏi mẫu"""
+    """Batch test mode with sample questions."""
     questions = test_questions()
     
     print("\n" + "="*80)
-    print("CHẾ ĐỘ TEST HÀNG LOẠT")
+    print("BATCH TEST MODE")
     print("="*80)
-    print(f"Sẽ test {len(questions)} câu hỏi mẫu...")
+    print(f"Testing {len(questions)} sample questions...")
     
     for i, question in enumerate(questions, 1):
         print(f"\n{'='*60}")
-        print(f"CÂU HỎI {i}/{len(questions)}: {question}")
+        print(f"QUESTION {i}/{len(questions)}: {question}")
         print("="*60)
         
         try:
-            result = rag_pipeline.answer(question, k=3)  # Lấy 3 context documents
+            result = rag_pipeline.answer(question, k=3)  # Retrieve 3 context documents
             
-            print(f"Câu trả lời:\n{result['answer']}")
+            print(f"Answer:\n{result['answer']}")
             
-            # Hiển thị context nếu muốn debug
-            show_context = input("\nBạn có muốn xem context? (y/n): ").strip().lower()
+            # Display context for debugging if desired
+            show_context = input("\nDo you want to see the context? (y/n): ").strip().lower()
             if show_context == 'y':
-                print(f"\nContext đã sử dụng:\n{result['context']}")
+                print(f"\nContext used:\n{result['context']}")
             
-            # Pause giữa các câu hỏi
+            # Pause between questions
             if i < len(questions):
-                input("\nNhấn Enter để tiếp tục...")
+                input("\nPress Enter to continue...")
                 
         except Exception as e:
-            print(f"Lỗi khi xử lý câu hỏi: {e}")
+            print(f"Error processing question: {e}")
             continue
 
 
 def main():
-    """Hàm chính của demo"""
-    print("DEMO TEST RAG PIPELINE - APEC 2027 AI CHATBOT")
+    """Main function for the demo."""
+    print("RAG PIPELINE DEMO - APEC 2027 AI CHATBOT")
     print("=" * 80)
     
     try:
-        # Khởi tạo RAG Pipeline
-        print("Đang khởi tạo RAG Pipeline...")
+        # Initialize the RAG Pipeline
+        print("Initializing RAG Pipeline...")
         rag = RAGPipeline()
-        print("Khởi tạo thành công!")
+        print("Initialization successful!")
         
-        # Menu lựa chọn
+        # Menu selection
         while True:
-            print("\nLựa chọn chế độ test:")
-            print("1. Test hàng loạt với câu hỏi mẫu")
-            print("2. Chế độ hỏi đáp tương tác")
-            print("3. Thoát")
+            print("\nSelect a test mode:")
+            print("1. Batch test with sample questions")
+            print("2. Interactive Q&A mode")
+            print("3. Exit")
             
-            choice = input("\nNhập lựa chọn (1-3): ").strip()
+            choice = input("\nEnter your choice (1-3): ").strip()
             
             if choice == "1":
                 batch_test_mode(rag)
             elif choice == "2":
                 interactive_mode(rag)
             elif choice == "3":
-                print("Tạm biệt!")
+                print("Goodbye!")
                 break
             else:
-                print("Lựa chọn không hợp lệ. Vui lòng nhập 1, 2 hoặc 3.")
+                print("Invalid choice. Please enter 1, 2, or 3.")
                 
     except FileNotFoundError as e:
-        print(f"\nLỗi: {e}")
-        print("\nĐảm bảo đã chạy các bước sau:")
+        print(f"\nError: {e}")
+        print("\nPlease ensure you have run the following steps:")
         print("1. python backend/data/crawler.py")
         print("2. python backend/Embed/embed_data.py") 
         print("3. python backend/VectorStore/build_faiss_index.py")
         
     except Exception as e:
-        print(f"\nLỗi không mong muốn: {e}")
-        print("Vui lòng kiểm tra lại cấu hình và thử lại.")
+        print(f"\nAn unexpected error occurred: {e}")
+        print("Please check your configuration and try again.")
 
 
 if __name__ == "__main__":
-    main() 
+    main()
